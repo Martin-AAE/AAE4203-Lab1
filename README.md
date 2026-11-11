@@ -41,7 +41,7 @@ AAE4203-Lab1/
 ├── tools/            documented Python scripts + RTKLIB binaries
 ├── submission/       G04_benchmark.csv, G04_owndata.csv, README.txt
 ├── results/          ablation summary and per-epoch solutions
-├── report/           report sources (build_report.py, make_figures.py) and PDF
+├── report/           submitted report (G04_24112364d_LabrReport.pdf) and its sources
 ├── run_all.sh        own-data pipeline
 ├── run_benchmark.sh  benchmark pipeline
 └── README.md         this file (details below)
