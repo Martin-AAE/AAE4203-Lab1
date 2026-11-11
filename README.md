@@ -33,7 +33,7 @@ lists the two optional packages needed to rebuild the figures and the report.
 **Repository layout**
 
 ```text
-AAE4203-Lab/
+AAE4203-Lab1/
 ├── input/            raw u-blox logs (Move.ubx, static.ubx)
 ├── benchmark/        UrbanNav deep1 RINEX + SOURCE.md (provenance)
 ├── rinex/            RINEX 3.04 produced by convbin
@@ -341,7 +341,7 @@ solution is smoother — the same contrast as Fig. 27. The few isolated spikes
 ## 8. Files
 
 ```
-AAE4203-Lab/
+AAE4203-Lab1/
 ├── input/            Move.ubx, static.ubx, tutorial PDF
 ├── rinex/            Move.obs, Move.nav, static.obs, static.nav
 ├── csv/

@@ -30,6 +30,7 @@ FIG4 = os.path.join(FIG_DIR, "fig4_static_scatter.png")
 FIG5 = os.path.join(FIG_DIR, "fig5_ablation.png")
 FIG_UC = os.path.join(FIG_DIR, "fig_setup_ucenter.png")
 FIG_GE = os.path.join(FIG_DIR, "fig_site_googleearth.png")
+FIG_PHOTO = os.path.join(FIG_DIR, "fig_setup_photo.png")
 
 ACCENT = RGBColor(0x1F, 0x38, 0x64)
 GREY = RGBColor(0x59, 0x59, 0x59)
@@ -404,16 +405,15 @@ body(doc,
      "occupation can serve as a reference for the kinematic one. The receiver tracked four "
      "constellations: GPS L1/L2, GLONASS L1/L2, Galileo E1/E5b and BeiDou B1I/B2I, which appear in "
      "the RINEX observation file as C1C/L1C/C2X (GPS), C1C/L1C/C2C (GLONASS), C1X/L1X/C7X (Galileo) "
-     "and C2I/L2I/C7I (BeiDou). Figure 1 is the u-center screen during the kinematic session: the "
-     "receiver reports a 3-D fix at 22.3054° N, 114.1800° E and 23.7 m ellipsoidal height, with "
-     "20 satellites tracked and HDOP 0.61.")
+     "and C2I/L2I/C7I (BeiDou). Figure 1 shows the receiving set-up and Figure 2 the u-center screen "
+     "during the kinematic session: the receiver reports a 3-D fix at 22.3054° N, 114.1800° E and "
+     "23.7 m ellipsoidal height, with 20 satellites tracked and HDOP 0.61.")
 
-figure(doc, FIG_UC,
-       "Figure 1: u-center during the kinematic session — sky plot (left) and position/DOP window "
-       "(right). The u-blox Generation 9 receiver on COM3 at 9600 baud reports a 3-D fix at "
-       "22.3054° N, 114.1800° E and 23.7 m ellipsoidal height, with 2-D accuracy 1.20 m, PDOP 1.2 "
-       "and HDOP 0.61; 20 satellites of the four constellations are tracked.",
-       width_cm=15.2)
+figure(doc, FIG_PHOTO,
+       "Figure 1: The receiving set-up during the kinematic session: the u-blox ZED-F9P module "
+       "(right) with its antenna cable, connected to the laptop running u-center. The receiver was "
+       "left on the ledge beside the walking area for both sessions.",
+       width_cm=7.8)
 
 body(doc,
      "u-center logged the message set listed in Table 1. RXM-RAWX carries the code, carrier-phase and "
@@ -431,11 +431,18 @@ body(doc,
      "loop of about 85 m × 85 m around the site; the second is a 4.5 min occupation of the same "
      "point, used to separate the solution scatter from the real motion.")
 
+figure(doc, FIG_UC,
+       "Figure 2: u-center during the kinematic session — sky plot (left) and position/DOP window "
+       "(right). The receiver reports a 3-D fix at 22.3054° N, 114.1800° E and 23.7 m ellipsoidal "
+       "height, with 2-D accuracy 1.20 m, PDOP 1.2 and HDOP 0.61; 20 satellites of the four "
+       "constellations are tracked.",
+       width_cm=13.8)
+
 figure(doc, FIG_GE,
-       "Figure 2: Google Earth view of the recording site. The green markers are the epochs of the "
+       "Figure 3: Google Earth view of the recording site. The green markers are the epochs of the "
        "kinematic session; the antenna stood on the open ground between the elevated road and the "
        "campus sports ground, with multi-storey blocks and a row of trees masking the sky in most "
-       "directions. Imagery © Google Earth.", width_cm=11.8)
+       "directions. Imagery © Google Earth.", width_cm=11.0)
 
 body(doc, "Table 1: Data collection summary.", size=9, justify=False, space_after=3, keep=True)
 make_table(doc,
@@ -449,7 +456,9 @@ make_table(doc,
             ["Logged UBX messages", "RXM-RAWX, RXM-SFRBX, RXM-MEASX, NAV-PVT, NAV-POSECEF, "
                                     "NAV-HPPOSECEF, MON-HW, MON-HW2"],
             ["Constellations", "GPS, GLONASS, Galileo, BeiDou"],
-            ["Weather / sky view", "[to be completed from the field notes]"]],
+            ["Weather / sky view", "Dry daylight session (no precipitation); the sky view is "
+                                   "partly blocked by the surrounding blocks, the flyover and the "
+                                   "row of trees (Figs. 1 and 3)"]],
            widths=[4.2, 11.6], font=8.5, left_align=(0, 1))
 
 # --------------------------------------------------------------------------- #
@@ -494,18 +503,18 @@ body(doc,
      "elevated reflections, which is what the residuals in Section 6 show.")
 
 body(doc,
-     "Figure 3 and Figure 4 give the C/N₀ time series and the sky plot; the satellite count per "
+     "Figure 4 and Figure 5 give the C/N₀ time series and the sky plot; the satellite count per "
      "constellation follows directly from Table 2. The number of satellites, the elevation and the "
      "DOP were computed from the RINEX observation file with the same conversion scripts that produce "
      "the SPP input tables, so the figures and the tables are consistent.")
 
 figure(doc, FIG2,
-       "Figure 3: C/N₀ of all tracked signals versus time. The shaded band is the 10–90 % range of "
+       "Figure 4: C/N₀ of all tracked signals versus time. The shaded band is the 10–90 % range of "
        "all signals in each 10 s bin, the lines are the per-constellation medians.", width_cm=15.6)
 
 figure(doc, FIG3,
-       "Figure 4: Sky plot of the kinematic session for all constellations, coloured by C/N₀. The "
-       "dashed circle is the 15° elevation mask.", width_cm=7.2)
+       "Figure 5: Sky plot of the kinematic session for all constellations, coloured by C/N₀. The "
+       "dashed circle is the 15° elevation mask.", width_cm=6.6)
 
 # --------------------------------------------------------------------------- #
 # 4 SPP algorithm
@@ -596,8 +605,6 @@ body(doc,
      "continuation line) and the BeiDou epochs in BDT, which must be shifted by 1356 weeks and 14 s "
      "before they are used with GPS time; both details were verified against RTKLIB's own results.",
      space_after=4)
-
-doc.add_page_break()
 
 p = doc.add_paragraph()
 p.paragraph_format.space_before = Pt(6)
@@ -706,11 +713,11 @@ body(doc,
      "95 % horizontal radius of 4.87 m, whereas the multi-GNSS solution gives 2.87 / 1.83 / 8.46 m "
      "and 5.53 m. The North scatter of the GPS-only case is caused by a handful of epochs in which "
      "only four or five satellites were available; the corresponding outliers are visible as the "
-     "long spikes of the ground track in Google Earth. Figure 5 shows the East–North scatter "
+     "long spikes of the ground track in Google Earth. Figure 6 shows the East–North scatter "
      "corresponding to this table.")
 
 figure(doc, FIG4,
-       "Figure 5: East–North scatter of the static solution about its mean: (a) GPS only and "
+       "Figure 6: East–North scatter of the static solution about its mean: (a) GPS only and "
        "(b) GPS + GLONASS + Galileo + BeiDou. The dashed circle is the 95 % horizontal radius.",
        width_cm=15.6)
 
@@ -768,12 +775,10 @@ body(doc,
      "observations, whose mean C/N₀ is 24 dB-Hz against 38 dB-Hz for the accepted set: it is the weak "
      "and multipath-contaminated signals that are discarded. The horizontal scatter of the kinematic "
      "solution does not improve (37.8 m against 36.1 m), which is consistent with the remaining "
-     "error being a slowly varying multipath bias rather than isolated outliers.")
+     "error being a slowly varying multipath bias rather than isolated outliers (the four versions are "
+     "compared in Table 4).")
 
-figure(doc, FIG5,
-       "Figure 6: Ablation of the SPP estimator on the own data: (a) East–North scatter of the "
-       "static solution without (v3) and with (v4) rejection, (b) 95 % horizontal radius and "
-       "(c) vertical scatter of the four versions for both datasets.", width_cm=11.8)
+
 
 body(doc,
      "When the benchmark is run, each version will be checked first on the example dataset, one "
@@ -817,7 +822,7 @@ body(doc,
 heading(doc, "9  Submission", 1)
 
 body(doc,
-     "GitHub repository: https://github.com/Martin-AAE/AAE4203-Lab — raw UBX logs, the UrbanNav "
+     "GitHub repository: https://github.com/Martin-AAE/AAE4203-Lab1 — raw UBX logs, the UrbanNav "
      "benchmark files, RINEX files, documented Python scripts, the RTKLIB configuration and this "
      "report source; `run_all.sh` and `run_benchmark.sh` regenerate every table and both submission "
      "files. Submitted: this report (PDF) on Blackboard and G04_benchmark.csv / G04_owndata.csv in "
@@ -892,12 +897,12 @@ for title, prompt, check in prompts:
     p.paragraph_format.left_indent = Cm(0.5)
     r = p.add_run(prompt)
     r.italic = True
-    r.font.size = Pt(9)
+    r.font.size = Pt(8.4)
     p = doc.add_paragraph()
     p.paragraph_format.space_after = Pt(2)
     p.paragraph_format.left_indent = Cm(0.5)
     r = p.add_run("Verification: " + check)
-    r.font.size = Pt(9)
+    r.font.size = Pt(8.4)
 
 # core properties
 cp = doc.core_properties
