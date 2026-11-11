@@ -1,0 +1,5 @@
+# The conversion, SPP and submission scripts use the Python standard library
+# only (Python >= 3.8).  The two optional packages are needed to rebuild the
+# figures and the Word report:
+matplotlib>=3.6      # report/figs/*.png
+python-docx>=1.0     # report/PolyU_AAE4203_Lab1_Report.docx
